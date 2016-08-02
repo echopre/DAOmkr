@@ -1,27 +1,14 @@
 <?php
-
 require_once './DAOmkr/geracod.php';
 
 $host = $_POST['host'];
 $user = $_POST['usrname'];
 $pass = $_POST['pass'];
 $banco = $_POST['banco'];
-$output = 'output/' . $banco;
+$output = 'output/'.$banco;
 
 geracod::setConfig($host, $banco, $user, $pass);
 mkdir($output, 0777, true);
-
-//gerando o arquivo de conexão que os demais arquivos importam
-$stconexao = file_get_contents('resources/stConexao.php');
-
-$dir = $output . '/stConexao.php';
-$fp = fopen($dir, "w");
-$escreve = fwrite($fp, $stconexao);
-fclose($fp);
-
-
-
-
 foreach ($_POST['tab'] as $tabela) {
     $dir = $output . '/' . $tabela . '.php';
     $dao = geracod::getCodigo($tabela);
@@ -33,9 +20,6 @@ foreach ($_POST['tab'] as $tabela) {
 // diretório que será compactado
 $diretorio = $output;
 echo 'ok';
-
-
-// Caso o usuário queira gerar um arquivo zip contendo as classes DAO
 
 // inicializa a classe ZipArchive
 //$zip = new ZipArchive();

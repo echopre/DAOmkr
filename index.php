@@ -1,9 +1,9 @@
 <?php
 
-define('USER','root');
+define('USER','');
 define('PASS','');
-define('BANCO','quatroma_elearning');
-define('HOST','localhost');
+define('BANCO','');
+define('HOST','');
 ?>
 <html>
     <head>
